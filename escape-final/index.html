@@ -1,0 +1,129 @@
+<html>
+    <head>
+      <title>leaflet tutorial</title>
+      <link rel="stylesheet" href="leaflet/leaflet.css" />
+     <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+    <![endif]-->
+      <!--
+      fullscreen css stuff below
+      -->
+      <style type="text/css">
+        #map { width: 700px; height: 433px; }
+        .leaflet-control-zoom-fullscreen { background-image: url(leaflet/images/icon-fullscreen.png); }
+        .leaflet-control-zoom-fullscreen.last { margin-top: 5px }
+        /* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+        #map:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+        #map:-moz-full-screen { width: 100% !important; height: 100% !important; }
+        #map:full-screen { width: 100% !important; height: 100% !important; }
+      </style>
+
+    </head>
+    <body style="margin:0; padding:0;">
+      <script src="leaflet/leaflet.js"></script>
+      <script src="leaflet/Control.FullScreen.js"></script>
+      <div id="map" style="margin:0; padding:0; height:100%; width:100%"></div>
+
+      <script type="text/javascript">
+
+      var map = L.map('map', {
+        'attributionControl': false,
+        'detectRetina': true
+      }).setView([0, 0], 4);
+
+      // create fullscreen control
+      var fullScreen = new L.Control.FullScreen();
+      // add fullscreen control to the map
+      map.addControl(fullScreen);
+
+//        var layer = L.tileLayer('california-choice/{z}/{x}/{y}.png', {
+      var layer = L.tileLayer('ahh.nuts', {
+          minZoom: 4,
+          maxZoom: 11,
+          noWrap: true
+      });
+
+      var attrib = new L.Control.Attribution;
+      attrib.setPrefix( "" );
+      attrib.addAttribution( '&copy; <a href="http://sixdozen.com">sixdozen</a>' ); 
+      map.addControl( attrib );
+
+      var tileLookup = {
+        '5,6': 'waters-edge-top-left-corner',
+        '6,6': 'california-coast-top-edge',
+        '7,6': 'california-choice-top-edge',
+        '8,6': 'lands-edge-top',
+        '9,6': 'lands-edge-top-right-corner',
+        '5,7': 'waters-edge-left',
+        '6,7': 'california-coast',
+        '7,7': 'california-choice',
+        '8,7': 'california-inland',
+        '9,7': 'lands-edge-right',
+        '5,8': 'waters-edge-left',
+        '6,8': 'mexico-coast',
+        '7,8': 'mexico-choice',
+        '8,8': 'mexico-inland',
+        '9,8': 'lands-edge-right',
+        '5,9': 'waters-edge-bottom-left-corner',
+        '6,9': 'waters-edge-bottom',
+        '7,9': 'mexico-choice-bottom-edge',
+        '8,9': 'lands-edge-bottom',
+        '9,9': 'lands-edge-bottom-right-corner',
+      }
+      var bounds = {
+        'xmin': 5.75,
+        'ymin': 6.75,
+        'xmax': 9.25,
+        'ymax': 9.25,
+      }
+
+      // adapted from leaflet-src.js
+      layer.getTileUrl = function (tilePoint) {
+        this._adjustTilePoint(tilePoint);
+
+        // map this x,y point to level 4 (16 across)
+        var zoom =  this._getZoomForUrl();
+        var range = Math.pow(2, zoom);
+        var x4s = (tilePoint.x * 16 / range);
+        var y4s = (tilePoint.y * 16 / range);
+        // we need extent to bounds check
+        var x4s1 = ((tilePoint.x+1) * 16 / range);
+        var y4s1 = ((tilePoint.y+1) * 16 / range);
+        // console.log(x4s + ":" + x4s1);
+        // bounds check
+        if(x4s1 <= bounds['xmin'] || x4s > bounds['xmax'] || y4s1 < bounds['ymin'] || y4s > bounds['ymax']) {
+          return "";
+        }
+        x4s = Math.floor(x4s);
+        y4s = Math.floor(y4s);
+        var key = x4s.toString() + "," + y4s.toString();
+        //console.log(key);
+        tilename = tileLookup[key];
+        if(!tilename) {
+          return "";
+        }
+
+        var adjustedz = this._getZoomForUrl() - 4;
+        var shift = Math.pow(2, adjustedz);
+
+        return L.Util.template(tilename + '/{z}/{x}/{y}.png', L.Util.extend({
+          s: this._getSubdomain(tilePoint),
+          z: adjustedz,
+          x: tilePoint.x - x4s * shift,
+          y: tilePoint.y - y4s * shift
+        }, this.options));
+      };
+      /*
+      layer.getTileUrl = function (tilePoint, zoom) {
+        //console.log(tilePoint);
+        console.log(this);
+        return "california-choice/0/0/0.png";
+        //return "some string with tilePoint.x, tilePoint.y and zoom";
+      };
+      */
+
+      layer.addTo(map);
+
+      </script>
+    </body>
+</html> 
