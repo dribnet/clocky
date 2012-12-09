@@ -1,0 +1,36 @@
+<html>
+    <head>
+      <title>escape</title>
+      <link rel="stylesheet" href="http://card.sixdozen.com/map/leaflet/leaflet.css" />
+      <link rel="stylesheet" href="http://card.sixdozen.com/map/vizgig.css" />
+     <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+    <![endif]-->
+      <!--
+      fullscreen css stuff below
+      -->
+      <style type="text/css">
+        #map { width: 700px; height: 433px; }
+        .leaflet-control-zoom-fullscreen { background-image: url(http://card.sixdozen.com/map/leaflet/images/icon-fullscreen.png); }
+        .leaflet-control-zoom-fullscreen.last { margin-top: 5px }
+        /* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+        #map:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+        #map:-moz-full-screen { width: 100% !important; height: 100% !important; }
+        #map:full-screen { width: 100% !important; height: 100% !important; }
+      </style>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    </head>
+    <body style="margin:0; padding:0;">
+      <script src="http://card.sixdozen.com/map/leaflet/leaflet.js"></script>
+      <!-- https://github.com/mlevans/leaflet-hash -->
+      <script src="http://card.sixdozen.com/map/leaflet/leaflet-hash.js"></script>
+      <!-- http://brunob.github.com/leaflet.fullscreen/ -->
+      <script src="http://card.sixdozen.com/map/leaflet/Control.FullScreen.js"></script>
+      <div id="map" style="margin:0; padding:0; height:100%; width:100%"></div>
+      <script src="http://card.sixdozen.com/map/leaflet/underscore-min.js"></script>
+      <script src="vizgig-params-remote.js"></script>
+      <script src="http://card.sixdozen.com/map/vizgig.js"></script>
+    </body>
+</html> 

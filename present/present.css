@@ -1,0 +1,50 @@
+body {
+/*
+  position: relative;
+  width: 1280px;
+  height: 800px;
+  margin: auto;
+  overflow: hidden;
+*/
+}
+
+iframe {
+  border: none;
+  position: absolute;
+  /*
+  width: 1280px;
+  height: 800px;
+  width: 100%;
+  height: 100%;
+  */
+
+  background: #fff;
+  -moz-transition-property: -moz-transform, opacity;
+  -moz-transition-duration: 500ms;
+  -webkit-transition-property: -webkit-transform, opacity;
+  -webkit-transition-duration: 500ms;
+}
+
+#previous {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  -moz-transform: translateX(-1300px);
+  -webkit-transform: translateX(-1300px);
+}
+
+#current {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  -moz-transform: translateX(0);
+  -webkit-transform: translateX(0);
+}
+
+#next {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  -moz-transform: translateX(1300px);
+  -webkit-transform: translateX(1300px);
+}

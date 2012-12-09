@@ -1,0 +1,36 @@
+<html>
+    <head>
+      <title>escape</title>
+      <link rel="stylesheet" href="/escape-final/leaflet/leaflet.css" />
+      <link rel="stylesheet" href="/escape-final/vizgig.css" />
+     <!--[if lte IE 8]>
+      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+    <![endif]-->
+      <!--
+      fullscreen css stuff below
+      -->
+      <style type="text/css">
+        #map { width: 700px; height: 433px; }
+        .leaflet-control-zoom-fullscreen { background-image: url(/escape-final/leaflet/images/icon-fullscreen.png); }
+        .leaflet-control-zoom-fullscreen.last { margin-top: 5px }
+        /* on selector per rule as explained here : http://www.sitepoint.com/html5-full-screen-api/ */
+        #map:-webkit-full-screen { width: 100% !important; height: 100% !important; }
+        #map:-moz-full-screen { width: 100% !important; height: 100% !important; }
+        #map:full-screen { width: 100% !important; height: 100% !important; }
+      </style>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    </head>
+    <body style="margin:0; padding:0;">
+      <script src="/escape-final/leaflet/leaflet.js"></script>
+      <!-- https://github.com/mlevans/leaflet-hash -->
+      <script src="/escape-final/leaflet/leaflet-hash.js"></script>
+      <!-- http://brunob.github.com/leaflet.fullscreen/ -->
+      <script src="/escape-final/leaflet/Control.FullScreen.js"></script>
+      <div id="map" style="margin:0; padding:0; height:100%; width:100%"></div>
+      <script src="/escape-final/leaflet/underscore-min.js"></script>
+      <script src="vizgig-params.js"></script>
+      <script src="/escape-final/vizgig.js"></script>
+    </body>
+</html> 

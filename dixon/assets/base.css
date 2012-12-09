@@ -1,0 +1,17 @@
+body { background-color:gray; }
+rect.box-off { fill:gray; 
+               opacity: 0;
+               /*
+               -webkit-transition: fill 0.05s linear;
+               -webkit-transition: opacity 0.05s linear;
+               */
+             }
+rect.box-off:hover { stroke:rgb(255,255,0); 
+                     opacity: 1;
+                   }
+rect.box-on { fill:#05182F; 
+              /*
+              -webkit-transition: fill 0.05s linear;
+              */
+            }
+rect.box-on:hover { stroke:rgb(255,255,0); }

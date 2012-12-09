@@ -1,0 +1,31 @@
+<html>
+<head>
+  <title>Dixon</title>
+  <link rel="stylesheet" href="assets/base.css">
+</head>
+<body>
+<!--  <svg id="board" style="display: block;margin: auto;height:600;width:600;"> -->
+  <h2>c2: game of life</h2>
+
+  <svg id="board">
+  <!-- board goes here -->
+  </svg>
+  <p>
+    <div id="control-buttons">
+      <button id="step-button" onclick="dixon.ui.step_button()">step</button>
+      <button id="play-button" onclick="dixon.ui.play_button()">play</button>
+      <button id="pause-button" onclick="dixon.ui.pause_button()">pause</button>
+      <button id="stop-button" onclick="dixon.ui.stop_button()">stop</button>
+      <br>
+      <button id="zoom-out" onclick="dixon.ui.zoom_out_button()">&lt;</button>
+      <button id="zoom-in" onclick="dixon.ui.zoom_in_button()">&gt;</button>
+      <br>
+      <div id="stepnum" style="display:inline-block">#</div>
+      <br>
+      <div id="vizstate" style="display:inline-block">#</div>
+    </div>
+  </p>
+
+  <script type="text/javascript" src="assets/rAF.js"></script>
+  <script type="text/javascript" src="out/dixon.js"></script>
+</body> </html>
