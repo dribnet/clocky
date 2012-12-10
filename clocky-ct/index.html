@@ -2,12 +2,26 @@
 <head>
   <title>Clocky</title>
   <link rel="stylesheet" href="assets/base.css">
+    <link type="text/css" rel="stylesheet" href="../sticky.css"/>
 </head>
 <body>
-  <h2>clocky-c2</h2>
+  <h3>clocky-c2</h3>
   <svg id="clocky">
   <!-- this is where the magic happens -->
   </svg>
   <script type="text/javascript" src="assets/rAF.js"></script>
   <script type="text/javascript" src="out/clocky.js"></script>
+
+<div style="z-index: 1; position: absolute; right: 10px; bottom: 10px; ">
+<ul class="sticky">
+  <li>
+      <p>This small radial clock example shows one way to animate with C2 (which does not provide support for animation).</p>
+  </li>
+  <p/>
+  <li>
+      <p>This radial clock will also end up serving as a rosetta stone - we'll see it implemented again an again with different libraries.</p>
+  </li>
+</ul>
+</div>
+
 </body> </html>

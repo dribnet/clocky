@@ -2,9 +2,27 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link type="text/css" rel="stylesheet" href="sticky.css"/>
   </head>
   <body>
     <h2>clocky-d3/src/cljs/clocky/core.cljs (initial version)</h2>
     <img src="clocky-d3-1.png">
+
+<div style="z-index: 1; position: absolute; right: 10px; bottom: 10px; ">
+<ul class="sticky">
+  <li>
+      <p>Wowza. A lot to say here. Note that this translates pretty directly and there are no other outside dependencies.</p>
+  </li>
+  <p/>
+  <li>
+      <p>Surprise: no data marshalling and we can access maps idomatically since we're giving d3 both the data and the functions to operate on them.</p>
+  </li>
+  <p/>
+  <li>
+      <p>There is one glaring wart: the (apply array ...) in curClockData so that d3 can iterate the clojure vector. Let's fix that.</p>
+  </li>
+</ul>
+</div>
+
   </body>
 </html>
